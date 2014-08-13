@@ -3,17 +3,20 @@
 <head>
   <meta charset="utf-8">
   
-  <title>Archives: 2014 | Hexo</title>
+  <title>iOS6 APP 适配 iOS7 简易方法 | Hexo</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-  <meta name="description">
-<meta property="og:type" content="website">
-<meta property="og:title" content="Hexo">
-<meta property="og:url" content="http://yoursite.com/archives/2014/">
+  <meta name="description" content="最近需要适配一个iOS6 APP到iOS7下，发现View会顶到最上面。查了下发现，因为iOS7默认开启了导航栏的半透明效果，能够看见View从它下面滑过，这样的话会导致原有布局正常的APP发生界面尺寸错乱，整体上移，底部留白。通过如下设置可以关掉这个效果，让布局同iOS6一致。
+1self.navigationController.navigationBar.translucent = NO;">
+<meta property="og:type" content="article">
+<meta property="og:title" content="iOS6 APP 适配 iOS7 简易方法">
+<meta property="og:url" content="http://yoursite.com/2013/10/08/2013-10-08-ios6-app-gua-pei-ios7-jian-yi-fang-fa/">
 <meta property="og:site_name" content="Hexo">
-<meta property="og:description">
+<meta property="og:description" content="最近需要适配一个iOS6 APP到iOS7下，发现View会顶到最上面。查了下发现，因为iOS7默认开启了导航栏的半透明效果，能够看见View从它下面滑过，这样的话会导致原有布局正常的APP发生界面尺寸错乱，整体上移，底部留白。通过如下设置可以关掉这个效果，让布局同iOS6一致。
+1self.navigationController.navigationBar.translucent = NO;">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="Hexo">
-<meta name="twitter:description">
+<meta name="twitter:title" content="iOS6 APP 适配 iOS7 简易方法">
+<meta name="twitter:description" content="最近需要适配一个iOS6 APP到iOS7下，发现View会顶到最上面。查了下发现，因为iOS7默认开启了导航栏的半透明效果，能够看见View从它下面滑过，这样的话会导致原有布局正常的APP发生界面尺寸错乱，整体上移，底部留白。通过如下设置可以关掉这个效果，让布局同iOS6一致。
+1self.navigationController.navigationBar.translucent = NO;">
 
   
     <link rel="alternative" href="/atom.xml" title="Hexo" type="application/atom+xml">
@@ -60,16 +63,14 @@
   </div>
 </header>
       <div class="outer">
-        <section id="main">
-  
-    <article id="post-2014-07-24-lvremove-shi-bai-shi-hou-de-chu-li-si-lu" class="article article-type-post" itemscope itemprop="blogPost">
+        <section id="main"><article id="post-2013-10-08-ios6-app-gua-pei-ios7-jian-yi-fang-fa" class="article article-type-post" itemscope itemprop="blogPost">
   <div class="article-meta">
-    <a href="/2014/07/24/2014-07-24-lvremove-shi-bai-shi-hou-de-chu-li-si-lu/" class="article-date">
-  <time datetime="2014-07-24T03:16:00.000Z" itemprop="datePublished">Jul 24 2014</time>
+    <a href="/2013/10/08/2013-10-08-ios6-app-gua-pei-ios7-jian-yi-fang-fa/" class="article-date">
+  <time datetime="2013-10-08T03:21:00.000Z" itemprop="datePublished">Oct 8 2013</time>
 </a>
     
   <div class="article-category">
-    <a class="article-category-link" href="/categories/openstack/">openstack</a>
+    <a class="article-category-link" href="/categories/iOS/">iOS</a>
   </div>
 
   </div>
@@ -79,8 +80,8 @@
       <header class="article-header">
         
   
-    <h1 itemprop="name">
-      <a class="article-title" href="/2014/07/24/2014-07-24-lvremove-shi-bai-shi-hou-de-chu-li-si-lu/">当lvremove失败时的解决思路</a>
+    <h1 class="article-title" itemprop="name">
+      iOS6 APP 适配 iOS7 简易方法
     </h1>
   
 
@@ -88,29 +89,43 @@
     
     <div class="article-entry" itemprop="articleBody">
       
-        <p>在删除逻辑卷的时候，遇到了如下问题：</p>
-<figure class="highlight"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line"><span class="comment"># lvremove /dev/cinder-volumes/volume-cf5565aa-291c-49ba-a75c-6842d4655d34</span></div><div class="line">Can't remove <span class="literal">open</span> logical volume <span class="string">"volume-cf5565aa-291c-49ba-a75c-6842d4655d34"</span></div></pre></td></tr></table></figure>
+        <p>最近需要适配一个iOS6 APP到iOS7下，发现View会顶到最上面。查了下发现，因为iOS7默认开启了导航栏的半透明效果，能够看见View从它下面滑过，这样的话会导致原有布局正常的APP发生界面尺寸错乱，整体上移，底部留白。<br>通过如下设置可以关掉这个效果，让布局同iOS6一致。</p>
+<figure class="highlight objc"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">self</span><span class="variable">.navigationController</span><span class="variable">.navigationBar</span><span class="variable">.translucent</span> = <span class="literal">NO</span>;</div></pre></td></tr></table></figure>
 
-<p>在serverfault.com找到如下解决方案:</p>
-<figure class="highlight"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div></pre></td><td class="code"><pre><div class="line"><span class="preprocessor"># fuser /dev/cinder-volumes/volume-cf5565aa-291c-49ba-a75c-6842d4655d34</span></div><div class="line">/dev/dm-<span class="number">14</span>:           <span class="number">1749</span></div><div class="line"></div><div class="line"><span class="preprocessor"># lsof | grep /dev/dm-14</span></div><div class="line">tgtd       <span class="number">1749</span>       root   <span class="number">19</span>u     <span class="constant"> BLK </span>            <span class="number">252</span>,<span class="number">14</span>         <span class="number">0</span>t0       <span class="number">8546</span> /dev/dm-<span class="number">14</span></div><div class="line"></div><div class="line"><span class="preprocessor"># service tgt stop</span></div><div class="line">tgt stop/waiting</div><div class="line"></div><div class="line"><span class="preprocessor"># lvremove /dev/cinder-volumes/volume-cf5565aa-291c-49ba-a75c-6842d4655d34 </span></div><div class="line">Do you really want to remove active logical volume volume-cf5565aa-<span class="number">291</span>c-<span class="number">49</span>ba-a75c-<span class="number">6842</span>d4655d34? [y/n]: y</div><div class="line">  Logical volume <span class="string">"volume-cf5565aa-291c-49ba-a75c-6842d4655d34"</span> successfully removed</div></pre></td></tr></table></figure>
-
-<p><a href="http://serverfault.com/questions/266697/cant-remove-open-logical-volume" target="_blank" rel="external">参考引用</a></p>
 <hr>
 
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://yoursite.com/2014/07/24/2014-07-24-lvremove-shi-bai-shi-hou-de-chu-li-si-lu/" data-id="r0p8pbg6whstl7vh" class="article-share-link">Share</a>
+      <a data-url="http://yoursite.com/2013/10/08/2013-10-08-ios6-app-gua-pei-ios7-jian-yi-fang-fa/" data-id="qe5s7zck5hq02zpt" class="article-share-link">Share</a>
       
       
     </footer>
   </div>
   
+    
+<nav id="article-nav">
+  
+    <a href="/2013/11/19/2013-11-19-diao-yong-python-novaclientyu-dao-de-wen-ti/" id="article-nav-newer" class="article-nav-link-wrap">
+      <strong class="article-nav-caption">Newer</strong>
+      <div class="article-nav-title">
+        
+          调用python-novaclient遇到的问题
+        
+      </div>
+    </a>
+  
+  
+    <a href="/2013/08/08/2013-08-08-ru-he-an-zhuang-pip/" id="article-nav-older" class="article-nav-link-wrap">
+      <strong class="article-nav-caption">Older</strong>
+      <div class="article-nav-title">如何安装pip</div>
+    </a>
+  
+</nav>
+
+  
 </article>
 
-
-  
-  
 </section>
         
           <aside id="sidebar">

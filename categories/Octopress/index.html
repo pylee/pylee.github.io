@@ -3,12 +3,12 @@
 <head>
   <meta charset="utf-8">
   
-  <title>Archives: 2014 | Hexo</title>
+  <title>Category: Octopress | Hexo</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
   <meta name="description">
 <meta property="og:type" content="website">
 <meta property="og:title" content="Hexo">
-<meta property="og:url" content="http://yoursite.com/archives/2014/">
+<meta property="og:url" content="http://yoursite.com/categories/Octopress/">
 <meta property="og:site_name" content="Hexo">
 <meta property="og:description">
 <meta name="twitter:card" content="summary">
@@ -62,14 +62,14 @@
       <div class="outer">
         <section id="main">
   
-    <article id="post-2014-07-24-lvremove-shi-bai-shi-hou-de-chu-li-si-lu" class="article article-type-post" itemscope itemprop="blogPost">
+    <article id="post-2013-02-26-octopress-yong-fa" class="article article-type-post" itemscope itemprop="blogPost">
   <div class="article-meta">
-    <a href="/2014/07/24/2014-07-24-lvremove-shi-bai-shi-hou-de-chu-li-si-lu/" class="article-date">
-  <time datetime="2014-07-24T03:16:00.000Z" itemprop="datePublished">Jul 24 2014</time>
+    <a href="/2013/02/26/2013-02-26-octopress-yong-fa/" class="article-date">
+  <time datetime="2013-02-26T06:59:00.000Z" itemprop="datePublished">Feb 26 2013</time>
 </a>
     
   <div class="article-category">
-    <a class="article-category-link" href="/categories/openstack/">openstack</a>
+    <a class="article-category-link" href="/categories/Octopress/">Octopress</a>
   </div>
 
   </div>
@@ -80,7 +80,7 @@
         
   
     <h1 itemprop="name">
-      <a class="article-title" href="/2014/07/24/2014-07-24-lvremove-shi-bai-shi-hou-de-chu-li-si-lu/">当lvremove失败时的解决思路</a>
+      <a class="article-title" href="/2013/02/26/2013-02-26-octopress-yong-fa/">Octopress 用法</a>
     </h1>
   
 
@@ -88,19 +88,37 @@
     
     <div class="article-entry" itemprop="articleBody">
       
-        <p>在删除逻辑卷的时候，遇到了如下问题：</p>
-<figure class="highlight"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line"><span class="comment"># lvremove /dev/cinder-volumes/volume-cf5565aa-291c-49ba-a75c-6842d4655d34</span></div><div class="line">Can't remove <span class="literal">open</span> logical volume <span class="string">"volume-cf5565aa-291c-49ba-a75c-6842d4655d34"</span></div></pre></td></tr></table></figure>
-
-<p>在serverfault.com找到如下解决方案:</p>
-<figure class="highlight"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div></pre></td><td class="code"><pre><div class="line"><span class="preprocessor"># fuser /dev/cinder-volumes/volume-cf5565aa-291c-49ba-a75c-6842d4655d34</span></div><div class="line">/dev/dm-<span class="number">14</span>:           <span class="number">1749</span></div><div class="line"></div><div class="line"><span class="preprocessor"># lsof | grep /dev/dm-14</span></div><div class="line">tgtd       <span class="number">1749</span>       root   <span class="number">19</span>u     <span class="constant"> BLK </span>            <span class="number">252</span>,<span class="number">14</span>         <span class="number">0</span>t0       <span class="number">8546</span> /dev/dm-<span class="number">14</span></div><div class="line"></div><div class="line"><span class="preprocessor"># service tgt stop</span></div><div class="line">tgt stop/waiting</div><div class="line"></div><div class="line"><span class="preprocessor"># lvremove /dev/cinder-volumes/volume-cf5565aa-291c-49ba-a75c-6842d4655d34 </span></div><div class="line">Do you really want to remove active logical volume volume-cf5565aa-<span class="number">291</span>c-<span class="number">49</span>ba-a75c-<span class="number">6842</span>d4655d34? [y/n]: y</div><div class="line">  Logical volume <span class="string">"volume-cf5565aa-291c-49ba-a75c-6842d4655d34"</span> successfully removed</div></pre></td></tr></table></figure>
-
-<p><a href="http://serverfault.com/questions/266697/cant-remove-open-logical-volume" target="_blank" rel="external">参考引用</a></p>
-<hr>
+        <p>第一次使用Octopress，如此简洁的感觉看起来很爽，下面是发文章的基本用法</p>
+<h4 id="新文章">新文章</h4>
+<pre><code><span class="title">rake</span> new_post[<span class="string">"title"</span>]
+</code></pre><h4 id="编辑文章内容">编辑文章内容</h4>
+<p>用vim即可或者其他编辑器，暂时还不会。</p>
+<h2 id="默认内容：">默认内容：</h2>
+<pre><code>layout: post
+title: "Octopress 用法"
+date: 2013-02-26 14:59
+comments: true
+<span class="header">categories: Octopress 
+---</span>
+</code></pre><p>头两个”—-“是文章属性，意义很直接。<br><em>categories</em>是文章分类，记得<em>:</em>后面要加个<em>空格</em>，如果想设置多个分类可以如下：<br>    categoriest: [公务猿, 苦逼]<br>或<br>    categoriest:</p>
+<pre><code>-<span class="ruby"> 公务猿
+</span>-<span class="ruby"> 苦逼</span>
+</code></pre><p>默认内容中第二个”—-“下面就是文章内容区域，需要使用<em>markdown</em>语法书写，这个需要自己去细查。</p>
+<h2 id="记住文章内容最后还需要加一个">记住文章内容最后还需要加一个</h2>
+<h4 id="生成静态内容">生成静态内容</h4>
+<pre><code>rake <span class="keyword">generate</span>
+</code></pre><h4 id="发表文章">发表文章</h4>
+<pre><code><span class="title">rake</span> deploy
+</code></pre><hr>
+<h4 id="引用">引用</h4>
+<ul>
+<li><a href="http://cofthew7.github.com/blog/2012/06/23/octopress-usages/" target="_blank" rel="external">Octopress Usages</a></li>
+</ul>
 
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://yoursite.com/2014/07/24/2014-07-24-lvremove-shi-bai-shi-hou-de-chu-li-si-lu/" data-id="r0p8pbg6whstl7vh" class="article-share-link">Share</a>
+      <a data-url="http://yoursite.com/2013/02/26/2013-02-26-octopress-yong-fa/" data-id="o4wrz8edg9d5d9ps" class="article-share-link">Share</a>
       
       
     </footer>

@@ -3,17 +3,18 @@
 <head>
   <meta charset="utf-8">
   
-  <title>Archives: 2014 | Hexo</title>
+  <title>Quiz数据库设计 | Hexo</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-  <meta name="description">
-<meta property="og:type" content="website">
-<meta property="og:title" content="Hexo">
-<meta property="og:url" content="http://yoursite.com/archives/2014/">
+  <meta name="description" content="Quiz数据库设计图">
+<meta property="og:type" content="article">
+<meta property="og:title" content="Quiz数据库设计">
+<meta property="og:url" content="http://yoursite.com/2013/03/11/2013-03-11-quizshu-ju-ku-she-ji/">
 <meta property="og:site_name" content="Hexo">
-<meta property="og:description">
+<meta property="og:description" content="Quiz数据库设计图">
+<meta property="og:image" content="http://docs.moodle.org/dev/images_dev/b/b5/Quiz_database.png">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="Hexo">
-<meta name="twitter:description">
+<meta name="twitter:title" content="Quiz数据库设计">
+<meta name="twitter:description" content="Quiz数据库设计图">
 
   
     <link rel="alternative" href="/atom.xml" title="Hexo" type="application/atom+xml">
@@ -60,16 +61,14 @@
   </div>
 </header>
       <div class="outer">
-        <section id="main">
-  
-    <article id="post-2014-07-24-lvremove-shi-bai-shi-hou-de-chu-li-si-lu" class="article article-type-post" itemscope itemprop="blogPost">
+        <section id="main"><article id="post-2013-03-11-quizshu-ju-ku-she-ji" class="article article-type-post" itemscope itemprop="blogPost">
   <div class="article-meta">
-    <a href="/2014/07/24/2014-07-24-lvremove-shi-bai-shi-hou-de-chu-li-si-lu/" class="article-date">
-  <time datetime="2014-07-24T03:16:00.000Z" itemprop="datePublished">Jul 24 2014</time>
+    <a href="/2013/03/11/2013-03-11-quizshu-ju-ku-she-ji/" class="article-date">
+  <time datetime="2013-03-11T07:07:00.000Z" itemprop="datePublished">Mar 11 2013</time>
 </a>
     
   <div class="article-category">
-    <a class="article-category-link" href="/categories/openstack/">openstack</a>
+    <a class="article-category-link" href="/categories/Moodle/">Moodle</a>
   </div>
 
   </div>
@@ -79,8 +78,8 @@
       <header class="article-header">
         
   
-    <h1 itemprop="name">
-      <a class="article-title" href="/2014/07/24/2014-07-24-lvremove-shi-bai-shi-hou-de-chu-li-si-lu/">当lvremove失败时的解决思路</a>
+    <h1 class="article-title" itemprop="name">
+      Quiz数据库设计
     </h1>
   
 
@@ -88,29 +87,43 @@
     
     <div class="article-entry" itemprop="articleBody">
       
-        <p>在删除逻辑卷的时候，遇到了如下问题：</p>
-<figure class="highlight"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line"><span class="comment"># lvremove /dev/cinder-volumes/volume-cf5565aa-291c-49ba-a75c-6842d4655d34</span></div><div class="line">Can't remove <span class="literal">open</span> logical volume <span class="string">"volume-cf5565aa-291c-49ba-a75c-6842d4655d34"</span></div></pre></td></tr></table></figure>
+        <h3 id="Quiz数据库设计图">Quiz数据库设计图</h3>
+<img src="http://docs.moodle.org/dev/images_dev/b/b5/Quiz_database.png">
 
-<p>在serverfault.com找到如下解决方案:</p>
-<figure class="highlight"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div></pre></td><td class="code"><pre><div class="line"><span class="preprocessor"># fuser /dev/cinder-volumes/volume-cf5565aa-291c-49ba-a75c-6842d4655d34</span></div><div class="line">/dev/dm-<span class="number">14</span>:           <span class="number">1749</span></div><div class="line"></div><div class="line"><span class="preprocessor"># lsof | grep /dev/dm-14</span></div><div class="line">tgtd       <span class="number">1749</span>       root   <span class="number">19</span>u     <span class="constant"> BLK </span>            <span class="number">252</span>,<span class="number">14</span>         <span class="number">0</span>t0       <span class="number">8546</span> /dev/dm-<span class="number">14</span></div><div class="line"></div><div class="line"><span class="preprocessor"># service tgt stop</span></div><div class="line">tgt stop/waiting</div><div class="line"></div><div class="line"><span class="preprocessor"># lvremove /dev/cinder-volumes/volume-cf5565aa-291c-49ba-a75c-6842d4655d34 </span></div><div class="line">Do you really want to remove active logical volume volume-cf5565aa-<span class="number">291</span>c-<span class="number">49</span>ba-a75c-<span class="number">6842</span>d4655d34? [y/n]: y</div><div class="line">  Logical volume <span class="string">"volume-cf5565aa-291c-49ba-a75c-6842d4655d34"</span> successfully removed</div></pre></td></tr></table></figure>
-
-<p><a href="http://serverfault.com/questions/266697/cant-remove-open-logical-volume" target="_blank" rel="external">参考引用</a></p>
 <hr>
 
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://yoursite.com/2014/07/24/2014-07-24-lvremove-shi-bai-shi-hou-de-chu-li-si-lu/" data-id="r0p8pbg6whstl7vh" class="article-share-link">Share</a>
+      <a data-url="http://yoursite.com/2013/03/11/2013-03-11-quizshu-ju-ku-she-ji/" data-id="oxc4o9k4fugyyw2p" class="article-share-link">Share</a>
       
       
     </footer>
   </div>
   
+    
+<nav id="article-nav">
+  
+    <a href="/2013/03/13/2013-03-13-raspberry-pi-plus-yeelink-dot-net-zai-xian-jian-shi-xi-tong-zhuang-tai/" id="article-nav-newer" class="article-nav-link-wrap">
+      <strong class="article-nav-caption">Newer</strong>
+      <div class="article-nav-title">
+        
+          Raspberry Pi+Yeelink.net 在线监视系统状态
+        
+      </div>
+    </a>
+  
+  
+    <a href="/2013/02/27/2013-02-27-moodle-quiz-yi-dong-shi-xian/" id="article-nav-older" class="article-nav-link-wrap">
+      <strong class="article-nav-caption">Older</strong>
+      <div class="article-nav-title">Moodle Quiz(测验) iOS端研究</div>
+    </a>
+  
+</nav>
+
+  
 </article>
 
-
-  
-  
 </section>
         
           <aside id="sidebar">

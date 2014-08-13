@@ -62,12 +62,16 @@
       <div class="outer">
         <section id="main">
   
-    <article id="post-test" class="article article-type-post" itemscope itemprop="blogPost">
+    <article id="post-2014-07-24-lvremove-shi-bai-shi-hou-de-chu-li-si-lu" class="article article-type-post" itemscope itemprop="blogPost">
   <div class="article-meta">
-    <a href="/2014/08/13/test/" class="article-date">
-  <time datetime="2014-08-13T09:47:43.000Z" itemprop="datePublished">Aug 13 2014</time>
+    <a href="/2014/07/24/2014-07-24-lvremove-shi-bai-shi-hou-de-chu-li-si-lu/" class="article-date">
+  <time datetime="2014-07-24T03:16:00.000Z" itemprop="datePublished">Jul 24 2014</time>
 </a>
     
+  <div class="article-category">
+    <a class="article-category-link" href="/categories/openstack/">openstack</a>
+  </div>
+
   </div>
   <div class="article-inner">
     
@@ -76,7 +80,7 @@
         
   
     <h1 itemprop="name">
-      <a class="article-title" href="/2014/08/13/test/">test</a>
+      <a class="article-title" href="/2014/07/24/2014-07-24-lvremove-shi-bai-shi-hou-de-chu-li-si-lu/">当lvremove失败时的解决思路</a>
     </h1>
   
 
@@ -84,11 +88,19 @@
     
     <div class="article-entry" itemprop="articleBody">
       
-        
+        <p>在删除逻辑卷的时候，遇到了如下问题：</p>
+<figure class="highlight"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line"><span class="comment"># lvremove /dev/cinder-volumes/volume-cf5565aa-291c-49ba-a75c-6842d4655d34</span></div><div class="line">Can't remove <span class="literal">open</span> logical volume <span class="string">"volume-cf5565aa-291c-49ba-a75c-6842d4655d34"</span></div></pre></td></tr></table></figure>
+
+<p>在serverfault.com找到如下解决方案:</p>
+<figure class="highlight"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div></pre></td><td class="code"><pre><div class="line"><span class="preprocessor"># fuser /dev/cinder-volumes/volume-cf5565aa-291c-49ba-a75c-6842d4655d34</span></div><div class="line">/dev/dm-<span class="number">14</span>:           <span class="number">1749</span></div><div class="line"></div><div class="line"><span class="preprocessor"># lsof | grep /dev/dm-14</span></div><div class="line">tgtd       <span class="number">1749</span>       root   <span class="number">19</span>u     <span class="constant"> BLK </span>            <span class="number">252</span>,<span class="number">14</span>         <span class="number">0</span>t0       <span class="number">8546</span> /dev/dm-<span class="number">14</span></div><div class="line"></div><div class="line"><span class="preprocessor"># service tgt stop</span></div><div class="line">tgt stop/waiting</div><div class="line"></div><div class="line"><span class="preprocessor"># lvremove /dev/cinder-volumes/volume-cf5565aa-291c-49ba-a75c-6842d4655d34 </span></div><div class="line">Do you really want to remove active logical volume volume-cf5565aa-<span class="number">291</span>c-<span class="number">49</span>ba-a75c-<span class="number">6842</span>d4655d34? [y/n]: y</div><div class="line">  Logical volume <span class="string">"volume-cf5565aa-291c-49ba-a75c-6842d4655d34"</span> successfully removed</div></pre></td></tr></table></figure>
+
+<p><a href="http://serverfault.com/questions/266697/cant-remove-open-logical-volume" target="_blank" rel="external">参考引用</a></p>
+<hr>
+
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://yoursite.com/2014/08/13/test/" data-id="2omnq2goel9qmlw9" class="article-share-link">Share</a>
+      <a data-url="http://yoursite.com/2014/07/24/2014-07-24-lvremove-shi-bai-shi-hou-de-chu-li-si-lu/" data-id="r0p8pbg6whstl7vh" class="article-share-link">Share</a>
       
       
     </footer>
@@ -98,12 +110,16 @@
 
 
   
-    <article id="post-hello-world" class="article article-type-post" itemscope itemprop="blogPost">
+    <article id="post-2013-11-19-diao-yong-python-novaclientyu-dao-de-wen-ti" class="article article-type-post" itemscope itemprop="blogPost">
   <div class="article-meta">
-    <a href="/2014/08/13/hello-world/" class="article-date">
-  <time datetime="2014-08-13T09:41:47.000Z" itemprop="datePublished">Aug 13 2014</time>
+    <a href="/2013/11/19/2013-11-19-diao-yong-python-novaclientyu-dao-de-wen-ti/" class="article-date">
+  <time datetime="2013-11-19T04:05:00.000Z" itemprop="datePublished">Nov 19 2013</time>
 </a>
     
+  <div class="article-category">
+    <a class="article-category-link" href="/categories/OpenStack/">OpenStack</a>
+  </div>
+
   </div>
   <div class="article-inner">
     
@@ -112,7 +128,7 @@
         
   
     <h1 itemprop="name">
-      <a class="article-title" href="/2014/08/13/hello-world/">Hello World</a>
+      <a class="article-title" href="/2013/11/19/2013-11-19-diao-yong-python-novaclientyu-dao-de-wen-ti/">调用python-novaclient遇到的问题</a>
     </h1>
   
 
@@ -120,29 +136,19 @@
     
     <div class="article-entry" itemprop="articleBody">
       
-        <p>Welcome to <a href="http://hexo.io/" target="_blank" rel="external">Hexo</a>! This is your very first post. Check <a href="http://hexo.io/docs/" target="_blank" rel="external">documentation</a> for more info. If you get any problems when using Hexo, you can find the answer in <a href="http://hexo.io/docs/troubleshooting.html" target="_blank" rel="external">trobuleshooting</a> or you can ask me on <a href="https://github.com/hexojs/hexo/issues" target="_blank" rel="external">GitHub</a>.</p>
-<h2 id="Quick_Start">Quick Start</h2>
-<h3 id="Create_a_new_post">Create a new post</h3>
-<figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">$ hexo new <span class="string">"My New Post"</span></div></pre></td></tr></table></figure>
-
-<p>More info: <a href="http://hexo.io/docs/writing.html" target="_blank" rel="external">Writing</a></p>
-<h3 id="Run_server">Run server</h3>
-<figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">$ hexo server</div></pre></td></tr></table></figure>
-
-<p>More info: <a href="http://hexo.io/docs/server.html" target="_blank" rel="external">Server</a></p>
-<h3 id="Generate_static_files">Generate static files</h3>
-<figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">$ hexo generate</div></pre></td></tr></table></figure>
-
-<p>More info: <a href="http://hexo.io/docs/generating.html" target="_blank" rel="external">Generating</a></p>
-<h3 id="Deploy_to_remote_sites">Deploy to remote sites</h3>
-<figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">$ hexo deploy</div></pre></td></tr></table></figure>
-
-<p>More info: <a href="http://hexo.io/docs/deployment.html" target="_blank" rel="external">Deployment</a></p>
+        <p>在做私有应用平台的过程中，需要对nova操作，这里选择直接调用python-novaclient的python api。o(╯□╰)o的是，python api没有文档，只能一个一个的翻源文件，好在代码非常规范，注释写的非常详细，这里就感受到了具有良好的编码习惯是件多么让后来人敬佩。在调用这些api的时候遇到了一些问题，这里集中记录说明：</p>
+<ol>
+<li><code>Error: No nw_info cache associated with instance (HTTP 400)</code><blockquote>
+<p>这个原因是获取不到instance的fixed_ip的信息，也就是instance还没初始化好，我实在给instance添加floating_ip的时候遇到的这个问题。<br><a href="http://www.gossamer-threads.com/lists/openstack/dev/23837" target="_blank" rel="external">参考引用</a></p>
+</blockquote>
+</li>
+</ol>
+<hr>
 
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://yoursite.com/2014/08/13/hello-world/" data-id="19zhjhftt5qoxbpy" class="article-share-link">Share</a>
+      <a data-url="http://yoursite.com/2013/11/19/2013-11-19-diao-yong-python-novaclientyu-dao-de-wen-ti/" data-id="j1l8rta34ageolfi" class="article-share-link">Share</a>
       
       
     </footer>
@@ -152,12 +158,421 @@
 
 
   
+    <article id="post-2013-10-08-ios6-app-gua-pei-ios7-jian-yi-fang-fa" class="article article-type-post" itemscope itemprop="blogPost">
+  <div class="article-meta">
+    <a href="/2013/10/08/2013-10-08-ios6-app-gua-pei-ios7-jian-yi-fang-fa/" class="article-date">
+  <time datetime="2013-10-08T03:21:00.000Z" itemprop="datePublished">Oct 8 2013</time>
+</a>
+    
+  <div class="article-category">
+    <a class="article-category-link" href="/categories/iOS/">iOS</a>
+  </div>
+
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2013/10/08/2013-10-08-ios6-app-gua-pei-ios7-jian-yi-fang-fa/">iOS6 APP 适配 iOS7 简易方法</a>
+    </h1>
+  
+
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <p>最近需要适配一个iOS6 APP到iOS7下，发现View会顶到最上面。查了下发现，因为iOS7默认开启了导航栏的半透明效果，能够看见View从它下面滑过，这样的话会导致原有布局正常的APP发生界面尺寸错乱，整体上移，底部留白。<br>通过如下设置可以关掉这个效果，让布局同iOS6一致。</p>
+<figure class="highlight objc"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">self</span><span class="variable">.navigationController</span><span class="variable">.navigationBar</span><span class="variable">.translucent</span> = <span class="literal">NO</span>;</div></pre></td></tr></table></figure>
+
+<hr>
+
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="http://yoursite.com/2013/10/08/2013-10-08-ios6-app-gua-pei-ios7-jian-yi-fang-fa/" data-id="qe5s7zck5hq02zpt" class="article-share-link">Share</a>
+      
+      
+    </footer>
+  </div>
+  
+</article>
+
+
+  
+    <article id="post-2013-08-08-ru-he-an-zhuang-pip" class="article article-type-post" itemscope itemprop="blogPost">
+  <div class="article-meta">
+    <a href="/2013/08/08/2013-08-08-ru-he-an-zhuang-pip/" class="article-date">
+  <time datetime="2013-08-08T06:27:00.000Z" itemprop="datePublished">Aug 8 2013</time>
+</a>
+    
+  <div class="article-category">
+    <a class="article-category-link" href="/categories/Python/">Python</a>
+  </div>
+
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2013/08/08/2013-08-08-ru-he-an-zhuang-pip/">如何安装pip</a>
+    </h1>
+  
+
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <p>pip是一个专门用来安装Python包的管理的工具，比如用来安装django，用法就想apt-get一样，非常的方便。<br>工具的安装方法如下:</p>
+<figure class="highlight objc"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div></pre></td><td class="code"><pre><div class="line">先安装Setuptools</div><div class="line">wget https:<span class="comment">//bitbucket.org/pypa/setuptools/raw/bootstrap/ez_setup.py</span></div><div class="line">python ez_setup<span class="variable">.py</span> --user</div><div class="line"></div><div class="line">再安装pip</div><div class="line">curl -O https:<span class="comment">//raw.github.com/pypa/pip/master/contrib/get-pip.py</span></div><div class="line">[sudo] python get-pip<span class="variable">.py</span></div></pre></td></tr></table></figure>
+
+<hr>
+
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="http://yoursite.com/2013/08/08/2013-08-08-ru-he-an-zhuang-pip/" data-id="gubr50kxfxswajd6" class="article-share-link">Share</a>
+      
+      
+    </footer>
+  </div>
+  
+</article>
+
+
+  
+    <article id="post-2013-06-19-yan-jiu-openstackjuan-jia-mi-peng-dao-de-wen-ti" class="article article-type-post" itemscope itemprop="blogPost">
+  <div class="article-meta">
+    <a href="/2013/06/19/2013-06-19-yan-jiu-openstackjuan-jia-mi-peng-dao-de-wen-ti/" class="article-date">
+  <time datetime="2013-06-19T12:23:00.000Z" itemprop="datePublished">Jun 19 2013</time>
+</a>
+    
+  <div class="article-category">
+    <a class="article-category-link" href="/categories/OpenStack/">OpenStack</a>
+  </div>
+
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2013/06/19/2013-06-19-yan-jiu-openstackjuan-jia-mi-peng-dao-de-wen-ti/">研究OpenStack卷加密碰到的问题</a>
+    </h1>
+  
+
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <h3 id="OpenStack环境搭建">OpenStack环境搭建</h3>
+<p>这一步有两个选择:</p>
+<ol>
+<li>一种就是正统的真实搭建，所有都按生产环境来部署，费时费力。</li>
+<li>还有一种就是官方推荐的一键安装<a href="http://devstack.org" target="_blank" rel="external"><strong><em>DevStack</em></strong></a>，直接安装最新的版本，体验最新的特性。</li>
+</ol>
+<p>至于如何选择，就看需求。当时我选择了DevStack，因为本身只是去实现个功能，这个就完全满足了。安装有点费时，默认会安装在 /opt/stack/ 下面，里面还有个devstack的目录，一般在这里启动，停止DevStack。官方没有自带重启 DevStack 的各种服务，不过高手自在民间，于是有外国有人写了重启的脚本。<a href="http://www.scalegrid.net/blog/?p=52" target="_blank" rel="external"><strong><em>Restarting DevStack</em></strong></a>。<br>所有的都OK了，然后访问服务器地址，就能看到Horizon了，账号admin，密码在服务器启动的时候，最后的地方会有提示，当然也就是你安装DevStack的时候输入的。</p>
+<h3 id="卷加密">卷加密</h3>
+<p>环境OK了，接下来研究卷加密。google了下LVM加密相关的内容，发现了Linux下面用<a href="https://code.google.com/p/cryptsetup/" target="_blank" rel="external"><strong><em>cryptsetup</em></strong></a>就能够实现卷加密的功能，这个可以通过apt-get来获取，只有几百KB。它把LVM加密过后必须要输入正确的密码才能mount使用，否者就无法挂载，自然也就不能查看里面的内容。操作的对象为LVM，所以需要事先创建好LVM，<a href="http://space.itpub.net/82392/viewspace-166638" target="_blank" rel="external"><strong><em>如何创建LVM看这里</em></strong></a>。</p>
+<p>cryptsetup LUKS加密步骤如下(假设LVM名为:lvm1, VG名为:vgtest):</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">cryptsetup luksFormat /dev/vgtest/lvm1</div><div class="line"><span class="comment">#回车后，会要求输入大写的YES，然后就输入密码</span></div></pre></td></tr></table></figure>
+
+<p>解密，并使用：</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div></pre></td><td class="code"><pre><div class="line">cryptsetup luksOpen /dev/vgtest/lvm1 encryptLVM</div><div class="line"><span class="comment">#回车后，要求输入刚才加密时设置的密码，正确则会创建一个Device-Mapper文件，/dev/mapper/encryptLVM，错误则无法生成，也就无法挂载使用。</span></div><div class="line">	</div><div class="line"><span class="comment">#格式化系统，并挂载使用</span></div><div class="line">mkfs.ext3 /dev/mapper/encryptLVM</div><div class="line">mkdir /mnt/crypt</div><div class="line">mount /dev/mapper/encryptLVM /mnt/crypt</div></pre></td></tr></table></figure>
+
+<p>卸载设备:</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">umount /mnt/crypt</div><div class="line">cryptsetup luksClose /dev/mapper/encryptLVM</div></pre></td></tr></table></figure>
+
+<p>如果要再使用的话，只需要再luksOpen，然后mount就可以了，不需要再luksFormat了。</p>
+<h3 id="整合到DevStack">整合到DevStack</h3>
+<p>加密和解密过程发生在LVM的attach和detach过程中，所以只需要在/nova/virt/libvirt/volume.py中的相关部分加上cryptsetup的加密，解密和关闭操作就可以实现LVM加密的功能，这部分就看个人怎么实现了。具体的实现代码可参考<a href="https://review.openstack.org/#/c/30976/" target="_blank" rel="external">Add encryption support for volumes</a>。</p>
+<hr>
+
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="http://yoursite.com/2013/06/19/2013-06-19-yan-jiu-openstackjuan-jia-mi-peng-dao-de-wen-ti/" data-id="q7w47fzeaw98ffwi" class="article-share-link">Share</a>
+      
+      
+    </footer>
+  </div>
+  
+</article>
+
+
+  
+    <article id="post-2013-05-17-iosdi-tu-kai-fa-chu-tan" class="article article-type-post" itemscope itemprop="blogPost">
+  <div class="article-meta">
+    <a href="/2013/05/17/2013-05-17-iosdi-tu-kai-fa-chu-tan/" class="article-date">
+  <time datetime="2013-05-17T07:13:00.000Z" itemprop="datePublished">May 17 2013</time>
+</a>
+    
+  <div class="article-category">
+    <a class="article-category-link" href="/categories/iOS/">iOS</a>
+  </div>
+
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2013/05/17/2013-05-17-iosdi-tu-kai-fa-chu-tan/">iOS地图开发初探</a>
+    </h1>
+  
+
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <p>周一接到个Demo任务，一个LBS应用，结合地图实现一个寻找周边停车场并且提供预订以及路线规划的功能。<br>拿到任务，马上想起iOS自带的Map Kit，到现在还没玩过这个框架，终于可以尝试下了。忙活了几天，基本做出来了，简单总结下几个主流的地图SDK。</p>
+<h3 id="Map_Kit">Map Kit</h3>
+<p>苹果自家地图服务，集成最好，iOS6以前数据来自Google，现在换数据提供商了，中国区使用高德的数据。但是不提供路径规划功能。</p>
+<h3 id="Google_Map_SDK">Google Map SDK</h3>
+<p>Google出的地图SDK，说实话，数据准确度上面，更相信Google，但是试用了下，依然不提供路径规划功能。</p>
+<h3 id="高德地图SDK">高德地图SDK</h3>
+<p>高德的数据，没啥感觉，不喜欢不讨厌，但是它<strong><em>提供路径规划功能</em></strong>，最后也采用这个。</p>
+<h2 id="百度地图SDK">百度地图SDK</h2>
+<p>鼓起勇气尝试百度的SDK，具体细节还没深究，第一映像分就给不高，直接下载然后在touch5上面运行，发现下面没填充完，一行空白，表示根本没做这一代的屏幕适配，尼玛百度你是个大厂啊，这么玩，其它几家都没这么粗心，你这太让人失望了。Demo提供的其它功能也没兴趣试下去，直接切换到高德去了。</p>
+<hr>
+
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="http://yoursite.com/2013/05/17/2013-05-17-iosdi-tu-kai-fa-chu-tan/" data-id="g2qiyeae34wpvyuu" class="article-share-link">Share</a>
+      
+      
+    </footer>
+  </div>
+  
+</article>
+
+
+  
+    <article id="post-2013-03-21-nstimer-de-yong-fa" class="article article-type-post" itemscope itemprop="blogPost">
+  <div class="article-meta">
+    <a href="/2013/03/21/2013-03-21-nstimer-de-yong-fa/" class="article-date">
+  <time datetime="2013-03-21T07:45:00.000Z" itemprop="datePublished">Mar 21 2013</time>
+</a>
+    
+  <div class="article-category">
+    <a class="article-category-link" href="/categories/iOS/">iOS</a>
+  </div>
+
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2013/03/21/2013-03-21-nstimer-de-yong-fa/">NSTimer 不准时的处理</a>
+    </h1>
+  
+
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <p>NSTimer作为iOS开发中的定时器，用处广泛，最近在使用它作为倒计时时，出了点小状况，如果使用如下方法初始化：</p>
+<figure class="highlight objc"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">NSTimer scheduledTimerWithTimeInterval:target:selector:userInfo:repeats:</div></pre></td></tr></table></figure>
+
+<p>如果我在拖动UIScrollView并且不放的时候，Timer并不会被触发，1s的间隔，我猜测可能是Timer附着在主线程上，也就是UI线程，如果主线程需要做UI重绘等大量计算或者被阻塞住，那么Timer的计时准确率就会变低，什么时候来都不确定，只有主线程空闲了，才会准确到达（任然有50-100毫秒误差），后来查阅了文档，果然是说Timer附着在NSRunLoop里，所以要保证Timer的触发，就应该换到其他NSRunLoop去，用下面方法就可以解决：</p>
+<figure class="highlight objc"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">yourTimer = [NSTimer timerWithTimeInterval:<span class="number">1.0</span>f target:<span class="keyword">self</span> selector:<span class="keyword">@selector</span>(updateTime) userInfo:<span class="literal">nil</span> repeats:<span class="literal">YES</span>];;</div><div class="line">[[NSRunLoop currentRunLoop] addTimer:yourTimer forMode:NSRunLoopCommonModes];</div></pre></td></tr></table></figure>
+
+<p>具体参数信息就需要自己查文档了。</p>
+<hr>
+
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="http://yoursite.com/2013/03/21/2013-03-21-nstimer-de-yong-fa/" data-id="7y5jniayavwl2qys" class="article-share-link">Share</a>
+      
+      
+    </footer>
+  </div>
+  
+</article>
+
+
+  
+    <article id="post-2013-03-19-curl-yong-fa" class="article article-type-post" itemscope itemprop="blogPost">
+  <div class="article-meta">
+    <a href="/2013/03/19/2013-03-19-curl-yong-fa/" class="article-date">
+  <time datetime="2013-03-19T08:18:00.000Z" itemprop="datePublished">Mar 19 2013</time>
+</a>
+    
+  <div class="article-category">
+    <a class="article-category-link" href="/categories/Linux/">Linux</a>
+  </div>
+
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2013/03/19/2013-03-19-curl-yong-fa/">curl 用法</a>
+    </h1>
+  
+
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <p><em>curl</em>可以作为下载命令使用，特此记录。</p>
+<h3 id="下载文件">下载文件</h3>
+<p>下面为直接下载文件，保存为原文件名：<br>    curl -O  <a href="http://mif.polimercolor.ru/mifsoft/MDict.zip" target="_blank" rel="external">http://mif.polimercolor.ru/mifsoft/MDict.zip</a></p>
+<p>下面为修改文件名：<br>    curl -O MDict_ver.zip  <a href="http://mif.polimercolor.ru/mifsoft/MDict.zip" target="_blank" rel="external">http://mif.polimercolor.ru/mifsoft/MDict.zip</a></p>
+<h3 id="断点续传">断点续传</h3>
+<p>下面为断点续传的方法, 使用<em>-C</em>选项，利用<em>-C -</em>选项并指出已经部分下载的文件名，curl将自动下载剩余的部分:<br>    curl -C - -o Smultron-2.2.6.dmg <a href="http://jaist.dl.sourceforge.net/Smultron-2.2.6.dmg" target="_blank" rel="external">http://jaist.dl.sourceforge.net/Smultron-2.2.6.dmg</a></p>
+<h3 id="使用代理服务器">使用代理服务器</h3>
+<pre><code>curl -x <span class="number">10.1</span><span class="number">.27</span><span class="number">.10</span>：<span class="number">1022</span> <span class="keyword">ftp</span>://<span class="keyword">ftp</span>.funet.fi/README
+</code></pre><p>以上为不需要账号密码的代理服务器下载方法，下面为提供账号密码：<br>    curl -U user:password -x 10.1.27.10:1022 ftp://ftp.funet.fi/README</p>
+<h3 id="更多功能">更多功能</h3>
+<p>使用 man curl，自行查看帮助。</p>
+<h4 id="引用">引用</h4>
+<p><a href="http://yyq123.blogspot.com/2009/09/curl.html" target="_blank" rel="external">使用cURL下载文件</a>    </p>
+<hr>
+
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="http://yoursite.com/2013/03/19/2013-03-19-curl-yong-fa/" data-id="9ikrcay6668xbwh2" class="article-share-link">Share</a>
+      
+      
+    </footer>
+  </div>
+  
+</article>
+
+
+  
+    <article id="post-2013-03-13-raspberry-pi-plus-yeelink-dot-net-zai-xian-jian-shi-xi-tong-zhuang-tai" class="article article-type-post" itemscope itemprop="blogPost">
+  <div class="article-meta">
+    <a href="/2013/03/13/2013-03-13-raspberry-pi-plus-yeelink-dot-net-zai-xian-jian-shi-xi-tong-zhuang-tai/" class="article-date">
+  <time datetime="2013-03-13T08:28:00.000Z" itemprop="datePublished">Mar 13 2013</time>
+</a>
+    
+  <div class="article-category">
+    <a class="article-category-link" href="/categories/Raspberry-Pi/">Raspberry Pi</a>
+  </div>
+
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2013/03/13/2013-03-13-raspberry-pi-plus-yeelink-dot-net-zai-xian-jian-shi-xi-tong-zhuang-tai/">Raspberry Pi+Yeelink.net 在线监视系统状态</a>
+    </h1>
+  
+
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <img src="/images/AE427C62-2777-4143-8E4C-E71F5A8BEF49.png"><br><a href="http://www.yeelink.net/devices/2047" target="_blank" rel="external">Raspberry Pi</a><br><br>上图为在Yeelink.net生成的曲线图，数据来源于家中的Raspberry Pi一分钟一次的数据上传，分别上传了CPU，内存，剩余空间的数据。<br><br>上传脚本如下：<br><br><figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div></pre></td><td class="code"><pre><div class="line"><span class="shebang">#! /bin/sh</span></div><div class="line"><span class="comment"># File path: ~/Yeelink/rpi_sensors.sh</span></div><div class="line"></div><div class="line">apikey=&lt;your api key&gt;</div><div class="line">url_cpu=http://api.yeelink.net/v1.<span class="number">0</span>/device/&lt;device no.&gt;/sensor/&lt;sensor no.&gt;/datapoints</div><div class="line">url_mem=http://api.yeelink.net/v1.<span class="number">0</span>/device/&lt;device no.&gt;/sensor/&lt;sensor no.&gt;/datapoints</div><div class="line">url_disk=http://api.yeelink.net/v1.<span class="number">0</span>/device/&lt;device no.&gt;/sensor/&lt;sensor no.&gt;/datapoints</div><div class="line"></div><div class="line">mem_used=$(free -m | grep <span class="string">"Mem"</span> | egrep <span class="string">"[[:digit:]]+"</span> -o | head -n <span class="number">2</span> | tail -n <span class="number">1</span>)</div><div class="line">cpu_load=$(iostat -c | tail -n <span class="number">2</span> | egrep <span class="string">"[[:digit:].]+"</span> -o | head -n <span class="number">1</span>)</div><div class="line">disk_avaliable=$(df <span class="operator">-l</span> | grep <span class="string">"/dev/sda5"</span> | egrep <span class="string">"[[:digit:]]+"</span> -o | tail -n <span class="number">3</span> | head -n <span class="number">1</span>)</div><div class="line"></div><div class="line">disk_ava=`<span class="built_in">echo</span> <span class="string">"<span class="variable">$disk_avaliable</span>/1024"</span>|bc`</div><div class="line"><span class="built_in">echo</span> <span class="variable">$disk_ava</span></div><div class="line"></div><div class="line">curl <span class="operator">-d</span> <span class="string">"{\"value\":<span class="variable">$mem_used</span>}"</span> -H <span class="string">"U-ApiKey: <span class="variable">$apikey</span>"</span> <span class="variable">$url_mem</span></div><div class="line">curl <span class="operator">-d</span> <span class="string">"{\"value\":<span class="variable">$cpu_load</span>}"</span> -H <span class="string">"U-ApiKey: <span class="variable">$apikey</span>"</span> <span class="variable">$url_cpu</span></div><div class="line">curl <span class="operator">-d</span> <span class="string">"{\"value\":<span class="variable">$disk_ava</span>}"</span> -H <span class="string">"U-Apikey: <span class="variable">$apikey</span>"</span> <span class="variable">$url_disk</span></div><div class="line"></div><div class="line"><span class="keyword">exit</span> <span class="number">0</span></div></pre></td></tr></table></figure>
+
+<p>上面的脚本获取了CPU，内存，剩余空间的值，然后通过Yeelink提供的api地址上传上去，但是还需要通过:</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">crontab <span class="operator">-e</span></div></pre></td></tr></table></figure>
+
+<p>来定时运行，内容看起来像这样：</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div></pre></td><td class="code"><pre><div class="line"><span class="comment"># Edit this file to introduce tasks to be run by cron.</span></div><div class="line"><span class="comment">#</span></div><div class="line"><span class="comment"># Each task to run has to be defined through a single line</span></div><div class="line"><span class="comment"># indicating with different fields when the task will be run</span></div><div class="line"><span class="comment"># and what command to run for the task</span></div><div class="line"><span class="comment">#</span></div><div class="line"><span class="comment"># To define the time you can provide concrete values for</span></div><div class="line"><span class="comment"># minute (m), hour (h), day of month (dom), month (mon),</span></div><div class="line"><span class="comment"># and day of week (dow) or use '*' in these fields (for 'any').#</span></div><div class="line"><span class="comment"># Notice that tasks will be started based on the cron's system</span></div><div class="line"><span class="comment"># daemon's notion of time and timezones.</span></div><div class="line"><span class="comment">#</span></div><div class="line"><span class="comment"># Output of the crontab jobs (including errors) is sent through</span></div><div class="line"><span class="comment"># email to the user the crontab file belongs to (unless redirected).</span></div><div class="line"><span class="comment">#</span></div><div class="line"><span class="comment"># For example, you can run a backup of all your user accounts</span></div><div class="line"><span class="comment"># at 5 a.m every week with:</span></div><div class="line"><span class="comment"># 0 5 * * 1 tar -zcf /var/backups/home.tgz /home/</span></div><div class="line"><span class="comment">#</span></div><div class="line"><span class="comment"># For more information see the manual pages of crontab(5) and cron(8)</span></div><div class="line"><span class="comment">#</span></div><div class="line"><span class="comment"># m h  dom mon dow   command</span></div><div class="line"></div><div class="line">*/<span class="number">1</span> * * * * ~/Yeelink/rpi_sensors.sh</div></pre></td></tr></table></figure>
+
+<p>上述代码为每隔1分钟运行一次rpi_sensors.sh，这样就能不间断上传数据了，如果crontab没有修改过默认编辑器的话，建议先修改为vim。<br>tips：对于上传间隔Yeelink有个限制，不能小于10s。</p>
+<h4 id="引用">引用</h4>
+<p><a href="http://aguegu.net/?p=1590" target="_blank" rel="external">[linux]在Yeelink云端架设笔记本运行监视器</a></p>
+<hr>
+
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="http://yoursite.com/2013/03/13/2013-03-13-raspberry-pi-plus-yeelink-dot-net-zai-xian-jian-shi-xi-tong-zhuang-tai/" data-id="9xyo6zc6cua4qsbv" class="article-share-link">Share</a>
+      
+      
+    </footer>
+  </div>
+  
+</article>
+
+
+  
+    <article id="post-2013-03-11-quizshu-ju-ku-she-ji" class="article article-type-post" itemscope itemprop="blogPost">
+  <div class="article-meta">
+    <a href="/2013/03/11/2013-03-11-quizshu-ju-ku-she-ji/" class="article-date">
+  <time datetime="2013-03-11T07:07:00.000Z" itemprop="datePublished">Mar 11 2013</time>
+</a>
+    
+  <div class="article-category">
+    <a class="article-category-link" href="/categories/Moodle/">Moodle</a>
+  </div>
+
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2013/03/11/2013-03-11-quizshu-ju-ku-she-ji/">Quiz数据库设计</a>
+    </h1>
+  
+
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <h3 id="Quiz数据库设计图">Quiz数据库设计图</h3>
+<img src="http://docs.moodle.org/dev/images_dev/b/b5/Quiz_database.png">
+
+<hr>
+
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="http://yoursite.com/2013/03/11/2013-03-11-quizshu-ju-ku-she-ji/" data-id="oxc4o9k4fugyyw2p" class="article-share-link">Share</a>
+      
+      
+    </footer>
+  </div>
+  
+</article>
+
+
+  
+  
+    <nav id="page-nav">
+      <span class="page-number current">1</span><a class="page-number" href="/page/2/">2</a><a class="extend next" rel="next" href="/page/2/">Next &raquo;</a>
+    </nav>
   
 </section>
         
           <aside id="sidebar">
   
     
+  <div class="widget-wrap">
+    <h3 class="widget-title">Categories</h3>
+    <div class="widget">
+      <ul class="category-list"><li class="category-list-item"><a class="category-list-link" href="/categories/Linux/">Linux</a><span class="category-list-count">1</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/Moodle/">Moodle</a><span class="category-list-count">2</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/Octopress/">Octopress</a><span class="category-list-count">1</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/OpenStack/">OpenStack</a><span class="category-list-count">2</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/Python/">Python</a><span class="category-list-count">1</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/Raspberry-Pi/">Raspberry Pi</a><span class="category-list-count">1</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/iOS/">iOS</a><span class="category-list-count">3</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/openstack/">openstack</a><span class="category-list-count">1</span></li></ul>
+    </div>
+  </div>
+
   
     
   
@@ -167,7 +582,7 @@
   <div class="widget-wrap">
     <h3 class="widget-title">Archives</h3>
     <div class="widget">
-      <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/archives/2014/08">August 2014</a><span class="archive-list-count">2</span></li></ul>
+      <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/archives/2014/07">July 2014</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2013/11">November 2013</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2013/10">October 2013</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2013/08">August 2013</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2013/06">June 2013</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2013/05">May 2013</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2013/03">March 2013</a><span class="archive-list-count">4</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2013/02">February 2013</a><span class="archive-list-count">2</span></li></ul>
     </div>
   </div>
 
@@ -179,11 +594,23 @@
       <ul>
         
           <li>
-            <a href="/2014/08/13/test/">test</a>
+            <a href="/2014/07/24/2014-07-24-lvremove-shi-bai-shi-hou-de-chu-li-si-lu/">当lvremove失败时的解决思路</a>
           </li>
         
           <li>
-            <a href="/2014/08/13/hello-world/">Hello World</a>
+            <a href="/2013/11/19/2013-11-19-diao-yong-python-novaclientyu-dao-de-wen-ti/">调用python-novaclient遇到的问题</a>
+          </li>
+        
+          <li>
+            <a href="/2013/10/08/2013-10-08-ios6-app-gua-pei-ios7-jian-yi-fang-fa/">iOS6 APP 适配 iOS7 简易方法</a>
+          </li>
+        
+          <li>
+            <a href="/2013/08/08/2013-08-08-ru-he-an-zhuang-pip/">如何安装pip</a>
+          </li>
+        
+          <li>
+            <a href="/2013/06/19/2013-06-19-yan-jiu-openstackjuan-jia-mi-peng-dao-de-wen-ti/">研究OpenStack卷加密碰到的问题</a>
           </li>
         
       </ul>
