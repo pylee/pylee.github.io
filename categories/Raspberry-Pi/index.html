@@ -1,162 +1,122 @@
-<!DOCTYPE HTML>
+<!DOCTYPE html>
 <html>
+
 <head>
-  <meta charset="utf-8">
-  
-  <title>Raspberry Pi | Armstrong</title>
-  <meta name="author" content="Lee">
-  
-  <meta name="description" content="在下只是希望能够把自己的力量，用来保护这个国家的弱者们。">
-  
-  
-  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+  <meta http-equiv="Content-Type" content="text/html" charset="UTF-8" >
+  <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1"/>
+  <title>Category: Raspberry Pi | Major Alex Louis Armstrong</title>
+  <meta name="description" content="豪腕之炼金术师" />
+  <meta name="HandheldFriendly" content="True" />
+  <meta name="MobileOptimized" content="320" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+  <link rel="stylesheet" type="text/css" href="/css/screen.css" />
+  <link rel="stylesheet" type="text/css" href="//fonts.googleapis.com/css?family=Noto+Serif:400,700,400italic|Open+Sans:700,400" />
+
+  <meta name="generator" content="Major Alex Louis Armstrong">
 
   
-  <meta property="og:site_name" content="Armstrong"/>
-
   
-    <meta property="og:image" content="undefined"/>
   
 
-  <link href="/favicon.png" rel="icon">
-  <link rel="alternate" href="/atom.xml" title="Armstrong" type="application/atom+xml">
-  <link rel="stylesheet" href="/css/style.css" media="screen" type="text/css">
-  <!--[if lt IE 9]><script src="//html5shiv.googlecode.com/svn/trunk/html5.js"></script><![endif]-->
   
-
 </head>
 
 
-<body>
-  <header id="header" class="inner"><div class="alignleft">
-  <h1><a href="/">Armstrong</a></h1>
-  <h2><a href="/">豪腕之炼金术师</a></h2>
-</div>
-<nav id="main-nav" class="alignright">
-  <ul>
-    
-      <li><a href="/">Home</a></li>
-    
-      <li><a href="/archives">Archives</a></li>
-    
-  </ul>
-  <div class="clearfix"></div>
-</nav>
-<div class="clearfix"></div></header>
-  <div id="content" class="inner">
-    <div id="main-col" class="alignleft"><div id="wrapper">
-<h2 class="archive-title category">Raspberry Pi</h2>
-
+<body class="home-template">
 
   
-    <article class="post">
-  
-  <div class="post-content">
-    <header>
-      
-        <div class="icon"></div>
-        <time datetime="2013-03-13T08:28:00.000Z"><a href="/2013/03/13/2013-03-13-raspberry-pi-plus-yeelink-dot-net-zai-xian-jian-shi-xi-tong-zhuang-tai/">3月 13 2013</a></time>
-      
-      
-  
-    <h1 class="title"><a href="/2013/03/13/2013-03-13-raspberry-pi-plus-yeelink-dot-net-zai-xian-jian-shi-xi-tong-zhuang-tai/">Raspberry Pi+Yeelink.net 在线监视系统状态</a></h1>
-  
-
-    </header>
-    <div class="entry">
-      
-        <img src="/images/AE427C62-2777-4143-8E4C-E71F5A8BEF49.png"><br><a href="http://www.yeelink.net/devices/2047" target="_blank" rel="external">Raspberry Pi</a><br><br>上图为在Yeelink.net生成的曲线图，数据来源于家中的Raspberry Pi一分钟一次的数据上传，分别上传了CPU，内存，剩余空间的数据。<br><br>上传脚本如下：<br><br><figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div></pre></td><td class="code"><pre><div class="line"><span class="shebang">#! /bin/sh</span></div><div class="line"><span class="comment"># File path: ~/Yeelink/rpi_sensors.sh</span></div><div class="line"></div><div class="line">apikey=&lt;your api key&gt;</div><div class="line">url_cpu=http://api.yeelink.net/v1.<span class="number">0</span>/device/&lt;device no.&gt;/sensor/&lt;sensor no.&gt;/datapoints</div><div class="line">url_mem=http://api.yeelink.net/v1.<span class="number">0</span>/device/&lt;device no.&gt;/sensor/&lt;sensor no.&gt;/datapoints</div><div class="line">url_disk=http://api.yeelink.net/v1.<span class="number">0</span>/device/&lt;device no.&gt;/sensor/&lt;sensor no.&gt;/datapoints</div><div class="line"></div><div class="line">mem_used=$(free -m | grep <span class="string">"Mem"</span> | egrep <span class="string">"[[:digit:]]+"</span> -o | head -n <span class="number">2</span> | tail -n <span class="number">1</span>)</div><div class="line">cpu_load=$(iostat -c | tail -n <span class="number">2</span> | egrep <span class="string">"[[:digit:].]+"</span> -o | head -n <span class="number">1</span>)</div><div class="line">disk_avaliable=$(df <span class="operator">-l</span> | grep <span class="string">"/dev/sda5"</span> | egrep <span class="string">"[[:digit:]]+"</span> -o | tail -n <span class="number">3</span> | head -n <span class="number">1</span>)</div><div class="line"></div><div class="line">disk_ava=`<span class="built_in">echo</span> <span class="string">"<span class="variable">$disk_avaliable</span>/1024"</span>|bc`</div><div class="line"><span class="built_in">echo</span> <span class="variable">$disk_ava</span></div><div class="line"></div><div class="line">curl <span class="operator">-d</span> <span class="string">"{\"value\":<span class="variable">$mem_used</span>}"</span> -H <span class="string">"U-ApiKey: <span class="variable">$apikey</span>"</span> <span class="variable">$url_mem</span></div><div class="line">curl <span class="operator">-d</span> <span class="string">"{\"value\":<span class="variable">$cpu_load</span>}"</span> -H <span class="string">"U-ApiKey: <span class="variable">$apikey</span>"</span> <span class="variable">$url_cpu</span></div><div class="line">curl <span class="operator">-d</span> <span class="string">"{\"value\":<span class="variable">$disk_ava</span>}"</span> -H <span class="string">"U-Apikey: <span class="variable">$apikey</span>"</span> <span class="variable">$url_disk</span></div><div class="line"></div><div class="line"><span class="keyword">exit</span> <span class="number">0</span></div></pre></td></tr></table></figure>
-
-<p>上面的脚本获取了CPU，内存，剩余空间的值，然后通过Yeelink提供的api地址上传上去，但是还需要通过:</p>
-<figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">crontab <span class="operator">-e</span></div></pre></td></tr></table></figure>
-
-<p>来定时运行，内容看起来像这样：</p>
-<figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div></pre></td><td class="code"><pre><div class="line"><span class="comment"># Edit this file to introduce tasks to be run by cron.</span></div><div class="line"><span class="comment">#</span></div><div class="line"><span class="comment"># Each task to run has to be defined through a single line</span></div><div class="line"><span class="comment"># indicating with different fields when the task will be run</span></div><div class="line"><span class="comment"># and what command to run for the task</span></div><div class="line"><span class="comment">#</span></div><div class="line"><span class="comment"># To define the time you can provide concrete values for</span></div><div class="line"><span class="comment"># minute (m), hour (h), day of month (dom), month (mon),</span></div><div class="line"><span class="comment"># and day of week (dow) or use '*' in these fields (for 'any').#</span></div><div class="line"><span class="comment"># Notice that tasks will be started based on the cron's system</span></div><div class="line"><span class="comment"># daemon's notion of time and timezones.</span></div><div class="line"><span class="comment">#</span></div><div class="line"><span class="comment"># Output of the crontab jobs (including errors) is sent through</span></div><div class="line"><span class="comment"># email to the user the crontab file belongs to (unless redirected).</span></div><div class="line"><span class="comment">#</span></div><div class="line"><span class="comment"># For example, you can run a backup of all your user accounts</span></div><div class="line"><span class="comment"># at 5 a.m every week with:</span></div><div class="line"><span class="comment"># 0 5 * * 1 tar -zcf /var/backups/home.tgz /home/</span></div><div class="line"><span class="comment">#</span></div><div class="line"><span class="comment"># For more information see the manual pages of crontab(5) and cron(8)</span></div><div class="line"><span class="comment">#</span></div><div class="line"><span class="comment"># m h  dom mon dow   command</span></div><div class="line"></div><div class="line">*/<span class="number">1</span> * * * * ~/Yeelink/rpi_sensors.sh</div></pre></td></tr></table></figure>
-
-<p>上述代码为每隔1分钟运行一次rpi_sensors.sh，这样就能不间断上传数据了，如果crontab没有修改过默认编辑器的话，建议先修改为vim。<br>tips：对于上传间隔Yeelink有个限制，不能小于10s。</p>
-<h4 id="引用">引用</h4>
-<p><a href="http://aguegu.net/?p=1590" target="_blank" rel="external">[linux]在Yeelink云端架设笔记本运行监视器</a></p>
-<hr>
-
-      
+<header class="site-head"  style="background-image: url(//blog.ghost.org/content/images/2013/Nov/cover.png)" >
+  <div class="vertical">
+    <div class="site-head-content inner">
+       <a class="blog-logo" href="/"><img src="//blog.ghost.org/content/images/2013/Nov/bloglogo_1-1.png" alt="Blog Logo"/></a> 
+      <h1 class="blog-title">Major Alex Louis Armstrong</h1>
+      <h2 class="blog-description">豪腕之炼金术师</h2>
     </div>
-    <footer>
-      
-        
-        
-      
-      <div class="clearfix"></div>
-    </footer>
   </div>
-</article>
+</header>
 
-
-
+<main class="content" role="main">
   
-
-  <nav id="pagination">
+  <article class="post">
+    <header class="post-header">
+      <span class="post-meta">
+        <time datetime="2013-03-13T08:28:00.000Z" itemprop="datePublished">Mar 13 2013</time>
+        
+      </span>
+      <h2 class="post-title"><a href="/2013/03/13/2013-03-13-raspberry-pi-plus-yeelink-dot-net-zai-xian-jian-shi-xi-tong-zhuang-tai/">Raspberry Pi+Yeelink.net 在线监视系统状态</a></h2>
+    </header>
+    <section class="post-excerpt">
+      <p>
+      
+        Raspberry Pi上图为在Yeelink.net生成的曲线图，数据来源于家中的Raspberry Pi一分钟一次的数据上传，分别上传了CPU，内存，剩余空间的数据。上传脚本如下：1234567891011121314151617181920#! /bin/sh# File path: ~/Yeelink/rpi_sensors.shapikey=&lt;your api key&gt;url_cpu=http://api.yeel
+      
+      </p>
+      
+      <p>
+          <a href="/2013/03/13/2013-03-13-raspberry-pi-plus-yeelink-dot-net-zai-xian-jian-shi-xi-tong-zhuang-tai/" class="excerpt-link">Read More...</a>
+      </p>
+      
+    </section>
+  </article>
   
-  
-  <div class="clearfix"></div>
-</nav>
-</div></div>
-    <aside id="sidebar" class="alignright">
-  <div class="search">
-  <form action="//google.com/search" method="get" accept-charset="utf-8">
-    <input type="search" name="q" results="0" placeholder="搜索">
-    <input type="hidden" name="q" value="site:yoursite.com">
-  </form>
-</div>
-
-  
-<div class="widget tag">
-  <h3 class="title">分类</h3>
-  <ul class="entry">
-  
-    <li><a href="/categories/Linux/">Linux</a><small>1</small></li>
-  
-    <li><a href="/categories/Moodle/">Moodle</a><small>2</small></li>
-  
-    <li><a href="/categories/Octopress/">Octopress</a><small>1</small></li>
-  
-    <li><a href="/categories/OpenStack/">OpenStack</a><small>2</small></li>
-  
-    <li><a href="/categories/Python/">Python</a><small>1</small></li>
-  
-    <li><a href="/categories/Raspberry-Pi/">Raspberry Pi</a><small>1</small></li>
-  
-    <li><a href="/categories/iOS/">iOS</a><small>3</small></li>
-  
-    <li><a href="/categories/openstack/">openstack</a><small>1</small></li>
-  
-  </ul>
-</div>
+  <nav class="pagination" role="pagination">
+    
+    <span class="page-number">Page 1 of 1</span>
+    
+  </nav>
+</main>
 
 
   
-</aside>
-    <div class="clearfix"></div>
+<footer class="site-footer">
+  
+  <div class="inner">
+     <section class="copyright">All content copyright <a href="/">Major Alex Louis Armstrong</a> &copy; 2014 &bull; All rights reserved.</section>
+     <section class="poweredby">Proudly published with <a class="icon-ghost" href="http://zespia.tw/hexo/">Hexo</a></section>
   </div>
-  <footer id="footer" class="inner"><div class="alignleft">
-  
-  &copy; 2014 Lee
-  
-</div>
-<div class="clearfix"></div></footer>
+</footer>
+
   <script src="//ajax.googleapis.com/ajax/libs/jquery/2.0.3/jquery.min.js"></script>
-<script src="/js/jquery.imagesloaded.min.js"></script>
-<script src="/js/gallery.js"></script>
+
+<script type="text/javascript" src="/js/jquery.fitvids.js"></script>
+<script type="text/javascript" src="/js/index.js"></script>
 
 
 
-
-<link rel="stylesheet" href="/fancybox/jquery.fancybox.css" media="screen" type="text/css">
-<script src="/fancybox/jquery.fancybox.pack.js"></script>
 <script type="text/javascript">
-(function($){
-  $('.fancybox').fancybox();
-})(jQuery);
+    var disqus_shortname = 'findpscldlee';
+
+    (function(){
+        var dsq = document.createElement('script');
+        dsq.type = 'text/javascript';
+        dsq.async = true;
+        dsq.src = '//' + disqus_shortname + '.disqus.com/count.js';
+        (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
+    }());
 </script>
+
+
+<link rel="stylesheet" href="/modules/fancybox/jquery.fancybox.css" media="screen" type="text/css">
+<script src="/modules/fancybox/jquery.fancybox.pack.js"></script>
+<script type="text/javascript">
+    (function($){
+
+        var wrapAll = function(q) {
+            $(q).each( function() {
+                var $img = $(this),
+                        href = $img.attr('src');
+                $img.wrap('<a rel="fancybox" href="' + href + '" title="' + $img.attr('alt') + '" class="link"></a>');
+            });
+        };
+
+        wrapAll('.post-content img');
+        wrapAll('.post-excerpt img');
+        $('[rel="fancybox"]').fancybox();
+    })(jQuery);
+</script>
+
+
 
 </body>
 </html>

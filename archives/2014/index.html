@@ -1,158 +1,126 @@
-<!DOCTYPE HTML>
+<!DOCTYPE html>
 <html>
+
 <head>
-  <meta charset="utf-8">
-  
-  <title>归档：2014 | Armstrong</title>
-  <meta name="author" content="Lee">
-  
-  <meta name="description" content="在下只是希望能够把自己的力量，用来保护这个国家的弱者们。">
-  
-  
-  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+  <meta http-equiv="Content-Type" content="text/html" charset="UTF-8" >
+  <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1"/>
+  <title>Archives: 2014 | Major Alex Louis Armstrong</title>
+  <meta name="description" content="豪腕之炼金术师" />
+  <meta name="HandheldFriendly" content="True" />
+  <meta name="MobileOptimized" content="320" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+  <link rel="stylesheet" type="text/css" href="/css/screen.css" />
+  <link rel="stylesheet" type="text/css" href="//fonts.googleapis.com/css?family=Noto+Serif:400,700,400italic|Open+Sans:700,400" />
+
+  <meta name="generator" content="Major Alex Louis Armstrong">
 
   
-  <meta property="og:site_name" content="Armstrong"/>
-
   
-    <meta property="og:image" content="undefined"/>
   
 
-  <link href="/favicon.png" rel="icon">
-  <link rel="alternate" href="/atom.xml" title="Armstrong" type="application/atom+xml">
-  <link rel="stylesheet" href="/css/style.css" media="screen" type="text/css">
-  <!--[if lt IE 9]><script src="//html5shiv.googlecode.com/svn/trunk/html5.js"></script><![endif]-->
   
-
 </head>
 
 
-<body>
-  <header id="header" class="inner"><div class="alignleft">
-  <h1><a href="/">Armstrong</a></h1>
-  <h2><a href="/">豪腕之炼金术师</a></h2>
-</div>
-<nav id="main-nav" class="alignright">
-  <ul>
-    
-      <li><a href="/">Home</a></li>
-    
-      <li><a href="/archives">Archives</a></li>
-    
-  </ul>
-  <div class="clearfix"></div>
-</nav>
-<div class="clearfix"></div></header>
-  <div id="content" class="inner">
-    <div id="main-col" class="alignleft"><div id="wrapper">
-<h2 class="archive-title">2014</h2>
-
+<body class="home-template">
 
   
-    <article class="post">
-  
-  <div class="post-content">
-    <header>
-      
-        <div class="icon"></div>
-        <time datetime="2014-07-24T03:16:00.000Z"><a href="/2014/07/24/2014-07-24-lvremove-shi-bai-shi-hou-de-chu-li-si-lu/">7月 24 2014</a></time>
-      
-      
-  
-    <h1 class="title"><a href="/2014/07/24/2014-07-24-lvremove-shi-bai-shi-hou-de-chu-li-si-lu/">当lvremove失败时的解决思路</a></h1>
-  
-
-    </header>
-    <div class="entry">
-      
-        <p>在删除逻辑卷的时候，遇到了如下问题：</p>
-<figure class="highlight"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line"><span class="comment"># lvremove /dev/cinder-volumes/volume-cf5565aa-291c-49ba-a75c-6842d4655d34</span></div><div class="line">Can't remove <span class="literal">open</span> logical volume <span class="string">"volume-cf5565aa-291c-49ba-a75c-6842d4655d34"</span></div></pre></td></tr></table></figure>
-
-<p>在serverfault.com找到如下解决方案:</p>
-<figure class="highlight"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div></pre></td><td class="code"><pre><div class="line"><span class="preprocessor"># fuser /dev/cinder-volumes/volume-cf5565aa-291c-49ba-a75c-6842d4655d34</span></div><div class="line">/dev/dm-<span class="number">14</span>:           <span class="number">1749</span></div><div class="line"></div><div class="line"><span class="preprocessor"># lsof | grep /dev/dm-14</span></div><div class="line">tgtd       <span class="number">1749</span>       root   <span class="number">19</span>u     <span class="constant"> BLK </span>            <span class="number">252</span>,<span class="number">14</span>         <span class="number">0</span>t0       <span class="number">8546</span> /dev/dm-<span class="number">14</span></div><div class="line"></div><div class="line"><span class="preprocessor"># service tgt stop</span></div><div class="line">tgt stop/waiting</div><div class="line"></div><div class="line"><span class="preprocessor"># lvremove /dev/cinder-volumes/volume-cf5565aa-291c-49ba-a75c-6842d4655d34 </span></div><div class="line">Do you really want to remove active logical volume volume-cf5565aa-<span class="number">291</span>c-<span class="number">49</span>ba-a75c-<span class="number">6842</span>d4655d34? [y/n]: y</div><div class="line">  Logical volume <span class="string">"volume-cf5565aa-291c-49ba-a75c-6842d4655d34"</span> successfully removed</div></pre></td></tr></table></figure>
-
-<p><a href="http://serverfault.com/questions/266697/cant-remove-open-logical-volume" target="_blank" rel="external">参考引用</a></p>
-<hr>
-
-      
+<header class="site-head"  style="background-image: url(//blog.ghost.org/content/images/2013/Nov/cover.png)" >
+  <div class="vertical">
+    <div class="site-head-content inner">
+       <a class="blog-logo" href="/"><img src="//blog.ghost.org/content/images/2013/Nov/bloglogo_1-1.png" alt="Blog Logo"/></a> 
+      <h1 class="blog-title">Major Alex Louis Armstrong</h1>
+      <h2 class="blog-description">豪腕之炼金术师</h2>
     </div>
-    <footer>
-      
-        
-        
-      
-      <div class="clearfix"></div>
-    </footer>
   </div>
-</article>
+</header>
 
+<main class="content" role="main">
+  
+  <article class="post">
+    <header class="post-header">
+      <span class="post-meta">
+        <time datetime="2014-07-24T03:16:00.000Z" itemprop="datePublished">Jul 24 2014</time>
+        
+      </span>
+      <h2 class="post-title"><a href="/2014/07/24/2014-07-24-lvremove-shi-bai-shi-hou-de-chu-li-si-lu/">当lvremove失败时的解决思路</a></h2>
+    </header>
+    <section class="post-excerpt">
+      <p>
+      
+        在删除逻辑卷的时候，遇到了如下问题：
+12# lvremove /dev/cinder-volumes/volume-cf5565aa-291c-49ba-a75c-6842d4655d34Can't remove open logical volume "volume-cf5565aa-291c-49ba-a75c-6842d4655d34"
 
-
+在serverfault.com找到如下解决方案:
+123456789101112# fu
+      
+      </p>
+      
+      <p>
+          <a href="/2014/07/24/2014-07-24-lvremove-shi-bai-shi-hou-de-chu-li-si-lu/" class="excerpt-link">Read More...</a>
+      </p>
+      
+    </section>
+  </article>
   
-
-  <nav id="pagination">
-  
-  
-  <div class="clearfix"></div>
-</nav>
-</div></div>
-    <aside id="sidebar" class="alignright">
-  <div class="search">
-  <form action="//google.com/search" method="get" accept-charset="utf-8">
-    <input type="search" name="q" results="0" placeholder="搜索">
-    <input type="hidden" name="q" value="site:yoursite.com">
-  </form>
-</div>
-
-  
-<div class="widget tag">
-  <h3 class="title">分类</h3>
-  <ul class="entry">
-  
-    <li><a href="/categories/Linux/">Linux</a><small>1</small></li>
-  
-    <li><a href="/categories/Moodle/">Moodle</a><small>2</small></li>
-  
-    <li><a href="/categories/Octopress/">Octopress</a><small>1</small></li>
-  
-    <li><a href="/categories/OpenStack/">OpenStack</a><small>2</small></li>
-  
-    <li><a href="/categories/Python/">Python</a><small>1</small></li>
-  
-    <li><a href="/categories/Raspberry-Pi/">Raspberry Pi</a><small>1</small></li>
-  
-    <li><a href="/categories/iOS/">iOS</a><small>3</small></li>
-  
-    <li><a href="/categories/openstack/">openstack</a><small>1</small></li>
-  
-  </ul>
-</div>
+  <nav class="pagination" role="pagination">
+    
+    <span class="page-number">Page 1 of 1</span>
+    
+  </nav>
+</main>
 
 
   
-</aside>
-    <div class="clearfix"></div>
+<footer class="site-footer">
+  
+  <div class="inner">
+     <section class="copyright">All content copyright <a href="/">Major Alex Louis Armstrong</a> &copy; 2014 &bull; All rights reserved.</section>
+     <section class="poweredby">Proudly published with <a class="icon-ghost" href="http://zespia.tw/hexo/">Hexo</a></section>
   </div>
-  <footer id="footer" class="inner"><div class="alignleft">
-  
-  &copy; 2014 Lee
-  
-</div>
-<div class="clearfix"></div></footer>
+</footer>
+
   <script src="//ajax.googleapis.com/ajax/libs/jquery/2.0.3/jquery.min.js"></script>
-<script src="/js/jquery.imagesloaded.min.js"></script>
-<script src="/js/gallery.js"></script>
+
+<script type="text/javascript" src="/js/jquery.fitvids.js"></script>
+<script type="text/javascript" src="/js/index.js"></script>
 
 
 
-
-<link rel="stylesheet" href="/fancybox/jquery.fancybox.css" media="screen" type="text/css">
-<script src="/fancybox/jquery.fancybox.pack.js"></script>
 <script type="text/javascript">
-(function($){
-  $('.fancybox').fancybox();
-})(jQuery);
+    var disqus_shortname = 'findpscldlee';
+
+    (function(){
+        var dsq = document.createElement('script');
+        dsq.type = 'text/javascript';
+        dsq.async = true;
+        dsq.src = '//' + disqus_shortname + '.disqus.com/count.js';
+        (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
+    }());
 </script>
+
+
+<link rel="stylesheet" href="/modules/fancybox/jquery.fancybox.css" media="screen" type="text/css">
+<script src="/modules/fancybox/jquery.fancybox.pack.js"></script>
+<script type="text/javascript">
+    (function($){
+
+        var wrapAll = function(q) {
+            $(q).each( function() {
+                var $img = $(this),
+                        href = $img.attr('src');
+                $img.wrap('<a rel="fancybox" href="' + href + '" title="' + $img.attr('alt') + '" class="link"></a>');
+            });
+        };
+
+        wrapAll('.post-content img');
+        wrapAll('.post-excerpt img');
+        $('[rel="fancybox"]').fancybox();
+    })(jQuery);
+</script>
+
+
 
 </body>
 </html>

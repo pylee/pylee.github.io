@@ -1,178 +1,134 @@
-<!DOCTYPE HTML>
+<!DOCTYPE html>
 <html>
+
 <head>
-  <meta charset="utf-8">
-  
-  <title>第 2 页 | 归档：2013 | Armstrong</title>
-  <meta name="author" content="Lee">
-  
-  <meta name="description" content="在下只是希望能够把自己的力量，用来保护这个国家的弱者们。">
-  
-  
-  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+  <meta http-equiv="Content-Type" content="text/html" charset="UTF-8" >
+  <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1"/>
+  <title>Archives: 2013 | Major Alex Louis Armstrong</title>
+  <meta name="description" content="豪腕之炼金术师" />
+  <meta name="HandheldFriendly" content="True" />
+  <meta name="MobileOptimized" content="320" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+  <link rel="stylesheet" type="text/css" href="/css/screen.css" />
+  <link rel="stylesheet" type="text/css" href="//fonts.googleapis.com/css?family=Noto+Serif:400,700,400italic|Open+Sans:700,400" />
+
+  <meta name="generator" content="Major Alex Louis Armstrong">
 
   
-  <meta property="og:site_name" content="Armstrong"/>
-
   
-    <meta property="og:image" content="undefined"/>
   
 
-  <link href="/favicon.png" rel="icon">
-  <link rel="alternate" href="/atom.xml" title="Armstrong" type="application/atom+xml">
-  <link rel="stylesheet" href="/css/style.css" media="screen" type="text/css">
-  <!--[if lt IE 9]><script src="//html5shiv.googlecode.com/svn/trunk/html5.js"></script><![endif]-->
   
-
 </head>
 
 
-<body>
-  <header id="header" class="inner"><div class="alignleft">
-  <h1><a href="/">Armstrong</a></h1>
-  <h2><a href="/">豪腕之炼金术师</a></h2>
-</div>
-<nav id="main-nav" class="alignright">
-  <ul>
-    
-      <li><a href="/">Home</a></li>
-    
-      <li><a href="/archives">Archives</a></li>
-    
-  </ul>
-  <div class="clearfix"></div>
-</nav>
-<div class="clearfix"></div></header>
-  <div id="content" class="inner">
-    <div id="main-col" class="alignleft"><div id="wrapper">
-<h2 class="archive-title">2013</h2>
-
+<body class="home-template">
 
   
-    <article class="post">
-  
-  <div class="post-content">
-    <header>
-      
-        <div class="icon"></div>
-        <time datetime="2013-02-26T06:59:00.000Z"><a href="/2013/02/26/2013-02-26-octopress-yong-fa/">2月 26 2013</a></time>
-      
-      
-  
-    <h1 class="title"><a href="/2013/02/26/2013-02-26-octopress-yong-fa/">Octopress 用法</a></h1>
-  
+<header class="site-head"  style="background-image: url(//blog.ghost.org/content/images/2013/Nov/cover.png)" >
+  <div class="vertical">
+    <div class="site-head-content inner">
+       <a class="blog-logo" href="/"><img src="//blog.ghost.org/content/images/2013/Nov/bloglogo_1-1.png" alt="Blog Logo"/></a> 
+      <h1 class="blog-title">Major Alex Louis Armstrong</h1>
+      <h2 class="blog-description">豪腕之炼金术师</h2>
+    </div>
+  </div>
+</header>
 
+<main class="content" role="main">
+  
+  <article class="post">
+    <header class="post-header">
+      <span class="post-meta">
+        <time datetime="2013-02-26T06:59:00.000Z" itemprop="datePublished">Feb 26 2013</time>
+        
+      </span>
+      <h2 class="post-title"><a href="/2013/02/26/2013-02-26-octopress-yong-fa/">Octopress 用法</a></h2>
     </header>
-    <div class="entry">
+    <section class="post-excerpt">
+      <p>
       
-        <p>第一次使用Octopress，如此简洁的感觉看起来很爽，下面是发文章的基本用法</p>
-<h4 id="新文章">新文章</h4>
-<pre><code><span class="title">rake</span> new_post[<span class="string">"title"</span>]
-</code></pre><h4 id="编辑文章内容">编辑文章内容</h4>
-<p>用vim即可或者其他编辑器，暂时还不会。</p>
-<h2 id="默认内容：">默认内容：</h2>
-<pre><code>layout: post
+        第一次使用Octopress，如此简洁的感觉看起来很爽，下面是发文章的基本用法
+新文章
+rake new_post["title"]
+编辑文章内容
+用vim即可或者其他编辑器，暂时还不会。
+默认内容：
+layout: post
 title: "Octopress 用法"
 date: 2013-02-26 14:59
 comments: true
-<span class="header">categories: Octopress 
----</span>
-</code></pre><p>头两个”—-“是文章属性，意义很直接。<br><em>categories</em>是文章分类，记得<em>:</em>后面要加个<em>空格</em>，如果想设置多个分类可以如下：<br>    categoriest: [公务猿, 苦逼]<br>或<br>    categoriest:</p>
-<pre><code>-<span class="ruby"> 公务猿
-</span>-<span class="ruby"> 苦逼</span>
-</code></pre><p>默认内容中第二个”—-“下面就是文章内容区域，需要使用<em>markdown</em>语法书写，这个需要自己去细查。</p>
-<h2 id="记住文章内容最后还需要加一个">记住文章内容最后还需要加一个</h2>
-<h4 id="生成静态内容">生成静态内容</h4>
-<pre><code>rake <span class="keyword">generate</span>
-</code></pre><h4 id="发表文章">发表文章</h4>
-<pre><code><span class="title">rake</span> deploy
-</code></pre><hr>
-<h4 id="引用">引用</h4>
-<ul>
-<li><a href="http://cofthew7.github.com/blog/2012/06/23/octopress-usages/" target="_blank" rel="external">Octopress Usages</a></li>
-</ul>
+categories: Octopress 
+---
+头两个”—-“是文章属性，意义很直接。
+      
+      </p>
+      
+      <p>
+          <a href="/2013/02/26/2013-02-26-octopress-yong-fa/" class="excerpt-link">Read More...</a>
+      </p>
+      
+    </section>
+  </article>
+  
+  <nav class="pagination" role="pagination">
+    <a class="newer-posts" href="/archives/2013/">← Newer Posts</a>
+    <span class="page-number">Page 2 of 2</span>
+    
+  </nav>
+</main>
 
-      
-    </div>
-    <footer>
-      
-        
-        
-      
-      <div class="clearfix"></div>
-    </footer>
+
+  
+<footer class="site-footer">
+  
+  <div class="inner">
+     <section class="copyright">All content copyright <a href="/">Major Alex Louis Armstrong</a> &copy; 2014 &bull; All rights reserved.</section>
+     <section class="poweredby">Proudly published with <a class="icon-ghost" href="http://zespia.tw/hexo/">Hexo</a></section>
   </div>
-</article>
+</footer>
 
-
-
-  
-
-  <nav id="pagination">
-  
-    <a href="/archives/2013/" class="alignleft prev">上一页</a>
-  
-  
-  <div class="clearfix"></div>
-</nav>
-</div></div>
-    <aside id="sidebar" class="alignright">
-  <div class="search">
-  <form action="//google.com/search" method="get" accept-charset="utf-8">
-    <input type="search" name="q" results="0" placeholder="搜索">
-    <input type="hidden" name="q" value="site:yoursite.com">
-  </form>
-</div>
-
-  
-<div class="widget tag">
-  <h3 class="title">分类</h3>
-  <ul class="entry">
-  
-    <li><a href="/categories/Linux/">Linux</a><small>1</small></li>
-  
-    <li><a href="/categories/Moodle/">Moodle</a><small>2</small></li>
-  
-    <li><a href="/categories/Octopress/">Octopress</a><small>1</small></li>
-  
-    <li><a href="/categories/OpenStack/">OpenStack</a><small>2</small></li>
-  
-    <li><a href="/categories/Python/">Python</a><small>1</small></li>
-  
-    <li><a href="/categories/Raspberry-Pi/">Raspberry Pi</a><small>1</small></li>
-  
-    <li><a href="/categories/iOS/">iOS</a><small>3</small></li>
-  
-    <li><a href="/categories/openstack/">openstack</a><small>1</small></li>
-  
-  </ul>
-</div>
-
-
-  
-</aside>
-    <div class="clearfix"></div>
-  </div>
-  <footer id="footer" class="inner"><div class="alignleft">
-  
-  &copy; 2014 Lee
-  
-</div>
-<div class="clearfix"></div></footer>
   <script src="//ajax.googleapis.com/ajax/libs/jquery/2.0.3/jquery.min.js"></script>
-<script src="/js/jquery.imagesloaded.min.js"></script>
-<script src="/js/gallery.js"></script>
+
+<script type="text/javascript" src="/js/jquery.fitvids.js"></script>
+<script type="text/javascript" src="/js/index.js"></script>
 
 
 
-
-<link rel="stylesheet" href="/fancybox/jquery.fancybox.css" media="screen" type="text/css">
-<script src="/fancybox/jquery.fancybox.pack.js"></script>
 <script type="text/javascript">
-(function($){
-  $('.fancybox').fancybox();
-})(jQuery);
+    var disqus_shortname = 'findpscldlee';
+
+    (function(){
+        var dsq = document.createElement('script');
+        dsq.type = 'text/javascript';
+        dsq.async = true;
+        dsq.src = '//' + disqus_shortname + '.disqus.com/count.js';
+        (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
+    }());
 </script>
+
+
+<link rel="stylesheet" href="/modules/fancybox/jquery.fancybox.css" media="screen" type="text/css">
+<script src="/modules/fancybox/jquery.fancybox.pack.js"></script>
+<script type="text/javascript">
+    (function($){
+
+        var wrapAll = function(q) {
+            $(q).each( function() {
+                var $img = $(this),
+                        href = $img.attr('src');
+                $img.wrap('<a rel="fancybox" href="' + href + '" title="' + $img.attr('alt') + '" class="link"></a>');
+            });
+        };
+
+        wrapAll('.post-content img');
+        wrapAll('.post-excerpt img');
+        $('[rel="fancybox"]').fancybox();
+    })(jQuery);
+</script>
+
+
 
 </body>
 </html>
